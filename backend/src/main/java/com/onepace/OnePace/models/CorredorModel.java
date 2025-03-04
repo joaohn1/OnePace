@@ -27,6 +27,14 @@ public class CorredorModel implements Serializable {
     @OneToMany(mappedBy = "corredor", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<TreinosModel> treinos = new HashSet<>();
 
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    @OneToMany(mappedBy = "corredor", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private Set<MetasModel> metas = new HashSet<>();
+
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    @OneToMany(mappedBy = "corredor", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private Set<InscricoesModel> inscricoes = new HashSet<>();
+
     @Column(nullable = false)
     private String nome;
 
@@ -124,6 +132,22 @@ public class CorredorModel implements Serializable {
 
     public void setTreinos(Set<TreinosModel> treinos) {
         this.treinos = treinos;
+    }
+
+    public Set<MetasModel> getMetas() {
+        return metas;
+    }
+
+    public void setMetas(Set<MetasModel> metas) {
+        this.metas = metas;
+    }
+
+    public Set<InscricoesModel> getInscricoes() {
+        return inscricoes;
+    }
+
+    public void setInscricoes(Set<InscricoesModel> inscricoes) {
+        this.inscricoes = inscricoes;
     }
 
 }
